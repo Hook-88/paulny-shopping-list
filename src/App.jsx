@@ -4,6 +4,8 @@ import MainContent from "./components/MainContent/MainContent"
 import Form from "./components/MainContent/Form/Form"
 import Button from "./components/Button/Button"
 
+import { RiDeleteBin5Fill } from "react-icons/ri"
+
 import './App.css'
 
 
@@ -19,7 +21,9 @@ function App() {
       <MainContent>
         <Form onSubmit={handleSubmit}>
           <input type="text" placeholder="Gaseosa..." className="form--text-input"/>
-          <Button>Click me</Button>
+          <Button onClick={() => console.log("clicked the button!")}>
+            Add to Shopping list
+          </Button>
         </Form>
       </MainContent>
       <Footer />

@@ -1,12 +1,11 @@
-import { RiDeleteBin5Fill } from "react-icons/ri"
+import "./Button.css"
 
 export default function Button({children, onClick}) {
 
 
-
   return (
-    <div onClick={onClick}>
-      <button>{children}</button>
-    </div>
+    <span onClick={onClick} className="button--span">
+      <button className="button">{children}</button>
+    </span>
   )
 }
