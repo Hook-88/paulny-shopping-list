@@ -1,0 +1,9 @@
+form.form--container {
+  display: grid;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+form.form--container input.form--text-input {
+  padding: .5rem;
+}

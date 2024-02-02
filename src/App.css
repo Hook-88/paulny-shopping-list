@@ -1,7 +1,9 @@
 #root {
   max-width: 385px;
   margin: 0 auto;
-  padding: 1rem;
   text-align: center;
   border: 2px dotted purple;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
