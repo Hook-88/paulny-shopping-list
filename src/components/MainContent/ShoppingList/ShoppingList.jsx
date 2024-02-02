@@ -1,12 +1,15 @@
-import { useState } from "react"
+import { useContext } from "react"
 import Item from "./Item/Item"
+import { AppContext } from "../../../App"
 import "./ShoppingList.css"
 
 export default function ShoppingList() {
-  const slDummyData = ["cervesa", "arroz", "pan"]
-  const [shoppingItems, setShoppingItems] = useState(slDummyData)
+  const { shoppingItems } = useContext(AppContext)
+  
   const shoppingListIemsEl = 
-    shoppingItems.map(item => <Item key={item}>{item}</Item>)
+    shoppingItems ?
+      shoppingItems.map(item => <Item key={item.id}>{item.name}</Item>) :
+      null
   
   return (
     <ul className="shopping-list--container">
