@@ -1,0 +1,8 @@
+li.item--container{
+  margin: 0 0 .5rem 0;
+  padding: .5rem;
+  text-align: left;
+  background-color: antiquewhite;
+  color: rgb(17, 16, 15);
+  border-radius: 2px;
+}

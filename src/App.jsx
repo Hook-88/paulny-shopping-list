@@ -3,6 +3,7 @@ import Header from "./components/Header/Header"
 import MainContent from "./components/MainContent/MainContent"
 import Form from "./components/MainContent/Form/Form"
 import Button from "./components/Button/Button"
+import ShoppingList from "./components/MainContent/ShoppingList/ShoppingList"
 
 import { RiDeleteBin5Fill } from "react-icons/ri"
 
@@ -25,6 +26,7 @@ function App() {
             Add to Shopping list
           </Button>
         </Form>
+        <ShoppingList />
       </MainContent>
       <Footer />
     </>
