@@ -19,9 +19,7 @@ function App() {
       <MainContent>
         <Form onSubmit={handleSubmit}>
           <input type="text" placeholder="Gaseosa..." className="form--text-input"/>
-          <Button>
-            <button>click me!</button>
-          </Button>
+          <Button>Click me</Button>
         </Form>
       </MainContent>
       <Footer />
