@@ -1,38 +1,35 @@
-import { useRef, createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 import Footer from "./components/Footer/Footer"
 import Header from "./components/Header/Header"
 import MainContent from "./components/MainContent/MainContent"
 import Form from "./components/MainContent/Form/Form"
 import Button from "./components/Button/Button"
 import ShoppingList from "./components/MainContent/ShoppingList/ShoppingList"
-
-import { RiDeleteBin5Fill } from "react-icons/ri"
+import { onSnapshot, addDoc } from "firebase/firestore"
+import { shoppingListCollection } from "./firebase"
 
 import './App.css'
-import { nanoid } from "nanoid"
 
 const AppContext = createContext()
-const slDummyData = [{name: "cerveza", id: "11656687"}]
 
 function App() {
   const [shoppingItems, setShoppingItems] = useState(null)
   const [newItem, setNewItem] = useState("")
-  
   
   function handleSubmit(event) {
     event.preventDefault()
     AddItemToShoppingList()
   }
 
-  function AddItemToShoppingList() {
-    setShoppingItems(prevItems => {
-      const itemObj = {
-        name: newItem,
-        id: nanoid()
-      }
-      
-      return prevItems ? [...prevItems, itemObj] : [itemObj]
-    })
+  //need to wait and therfor async
+  async function AddItemToShoppingList() {
+    // create new item object
+    const itemObj = {
+      name: newItem
+    }
+    // ref to doc, can use to get ID
+    const newItemReg = await addDoc(shoppingListCollection, itemObj)
+    
     setNewItem("")
   }
 
@@ -40,6 +37,23 @@ function App() {
     const { value } = event.target
     setNewItem(value)
   }
+
+  useEffect(() => {
+    const unSubscribe = onSnapshot(shoppingListCollection, function(snapshot) {
+      // sync up database with local state
+      const itemsArray = snapshot.docs.map(doc => {
+        
+        return {
+          ...doc.data(),
+          id: doc.id
+        }
+      })
+
+      setShoppingItems(itemsArray)
+    })
+
+    return unSubscribe
+  },[])
 
   return (
     <>
