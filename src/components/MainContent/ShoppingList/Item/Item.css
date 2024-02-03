@@ -1,8 +1,24 @@
 li.item--container{
   margin: 0 0 .5rem 0;
-  padding: .5rem;
+  padding: 0 0 0 .5rem;
   text-align: left;
   background-color: antiquewhite;
   color: rgb(17, 16, 15);
   border-radius: 2px;
+  overflow: hidden;
+}
+
+div.item--display {
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+}
+
+div.item--display p {
+  margin: .8rem 0;
+  align-self: center;
+}
+
+div.item--display button {
+  padding: 0 1rem;
+  background-color: rgb(251, 221, 87);
 }

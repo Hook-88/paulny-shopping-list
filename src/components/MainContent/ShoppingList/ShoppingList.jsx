@@ -8,9 +8,6 @@ export default function ShoppingList() {
   const { shoppingItems } = useContext(AppContext)
   const sortedShoppingListItems = shoppingItems ? [...shoppingItems] : []
   sortedShoppingListItems.sort((a, b) => a.name.localeCompare(b.name))
-    
-
-  console.log(sortedShoppingListItems)
   
   const shoppingListIemsEl =
     // if there are items on shopping list 
