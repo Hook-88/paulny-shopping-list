@@ -25,7 +25,7 @@ function App() {
   async function AddItemToShoppingList() {
     // create new item object
     const itemObj = {
-      name: newItem
+      name: newItem.toLowerCase()
     }
     // ref to doc, can use to get ID
     const newItemReg = await addDoc(shoppingListCollection, itemObj)
