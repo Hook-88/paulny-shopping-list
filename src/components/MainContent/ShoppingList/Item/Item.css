@@ -1,6 +1,5 @@
 li.item--container{
   margin: 0 0 .5rem 0;
-  padding: 0 0 0 .5rem;
   text-align: left;
   background-color: antiquewhite;
   color: rgb(17, 16, 15);
@@ -10,15 +9,27 @@ li.item--container{
 
 div.item--display {
   display: grid;
-  grid-template-columns: 8fr 1fr;
+  grid-template-columns: 8fr 1.3fr;
 }
 
 div.item--display p {
   margin: .8rem 0;
   align-self: center;
+  margin-left: .5rem;
 }
 
-div.item--display button {
-  padding: 0 1rem;
+.remove {
+  background-color: rgb(247, 221, 225);
+}
+
+.remove p {
+  text-decoration: line-through;
+}
+
+.item-edit--button {
   background-color: rgb(251, 221, 87);
+}
+
+.item-delete--button {
+  background-color: rgb(185, 18, 18);
 }

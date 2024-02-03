@@ -1,17 +1,17 @@
 import classNames from "classnames"
 import "./Button.css"
 
-export default function Button({children, onClick, className = ""}) {
-  const spanClassnames = classNames(
-    "button--span",
+export default function Button({children, onClick, className}) {
+  const buttonClassnames = classNames(
+    "button",
     className
   )
 
-  console.log(spanClassnames)
+  console.log(buttonClassnames)
 
   return (
     <span onClick={onClick} className="button--span">
-      <button className="button">{children}</button>
+      <button className={buttonClassnames}>{children}</button>
     </span>
   )
 }
