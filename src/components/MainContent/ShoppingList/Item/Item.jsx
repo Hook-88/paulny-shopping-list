@@ -1,5 +1,3 @@
-import ItemDisplay from "./ItemDisplay"
-import ItemDisplayRemove from "./ItemDisplayRemove"
 import "./Item.css"
 import { createContext } from "react"
 
@@ -11,11 +9,7 @@ export default function Item({children, itemObj}) {
   return (
     <ItemContext.Provider value={{itemObj}}>
       <li className="item--container">
-        {
-          checked ?
-          <ItemDisplayRemove>{children}</ItemDisplayRemove> :
-          <ItemDisplay>{children}</ItemDisplay>
-        } 
+        {children}
       </li>
     </ItemContext.Provider>
   )
