@@ -1,5 +1,8 @@
-import "./Item.css"
 import { createContext } from "react"
+import { FaPenToSquare } from "react-icons/fa6"
+import Button from "../../../Button/Button"
+import ItemDisplayNormal from "./ItemDisplayNormal"
+import "./Item.css"
 
 const ItemContext = createContext()
 
@@ -9,7 +12,7 @@ export default function Item({children, itemObj}) {
   return (
     <ItemContext.Provider value={{itemObj}}>
       <li className="item--container">
-        {children}
+        <ItemDisplayNormal>{children}</ItemDisplayNormal>
       </li>
     </ItemContext.Provider>
   )

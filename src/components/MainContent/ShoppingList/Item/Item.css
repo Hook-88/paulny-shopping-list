@@ -3,6 +3,30 @@ li.item--container{
   text-align: left;
   background-color: antiquewhite;
   color: rgb(17, 16, 15);
-  border-radius: 2px;
+  border-radius: 3px;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+
+li.item--container p {
+  margin-left: .5rem;
+}
+
+li.item--container input {
+  width: 100%;
+  padding: 1rem .4rem;
+  font-size: 1rem;
+  border: none;
+}
+
+button.icon--btn {
+  font-size: 1.2rem;
+  padding: .8rem 1.3rem;
+  background-color: transparent;
+  color: rgb(17, 16, 15);
+}
+
+button.icon--btn.edit {
+  background-color: white;
 }
