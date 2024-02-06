@@ -5,11 +5,11 @@ import MainContent from "./components/MainContent/MainContent"
 import Form from "./components/MainContent/Form/Form"
 import Button from "./components/Button/Button"
 import ShoppingList from "./components/MainContent/ShoppingList/ShoppingList"
-import { onSnapshot, addDoc } from "firebase/firestore"
-import { shoppingListCollection } from "./firebase"
+import { onSnapshot, addDoc, doc, deleteDoc, updateDoc, getDoc  } from "firebase/firestore"
+import { shoppingListCollection, db } from "./firebase"
 
 import './App.css'
-
+ 
 const AppContext = createContext()
 
 function App() {
@@ -21,7 +21,27 @@ function App() {
     AddItemToShoppingList()
   }
 
-  //need to wait and therfor async
+  async function deleteItem(itemID) {
+    const docRef = doc(db, "shoppingList", itemID)
+    await deleteDoc(docRef)
+  }
+
+  async function updateItem(itemID, prop) {
+    if (prop === "checked") {
+      togglePropInDoc(itemID, prop)
+    }
+    
+
+  }
+
+  async function togglePropInDoc(itemID, prop) {
+    const docRef = doc(db, "shoppingList", itemID)
+    const docSnap = await getDoc(docRef)
+
+    await updateDoc(docRef, {[prop]: !docSnap.data().checked})
+
+  }
+
   async function AddItemToShoppingList() {
     // create new item object
     const itemObj = {
@@ -59,7 +79,7 @@ function App() {
   return (
     <>
       <Header />
-      <AppContext.Provider value={{shoppingItems}}>
+      <AppContext.Provider value={{shoppingItems, deleteItem, updateItem}}>
         <MainContent>
           <Form onSubmit={handleSubmit} onChange={handleFormChange}>
             <input type="text" placeholder="Gaseosa..." className="form--text-input" value={newItem}/>
@@ -67,7 +87,9 @@ function App() {
               Add to Shopping list
             </Button>
           </Form>
+
           <ShoppingList />
+
         </MainContent>
       </AppContext.Provider>
       <Footer />

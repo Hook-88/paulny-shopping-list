@@ -7,8 +7,6 @@ export default function Button({children, onClick, className}) {
     className
   )
 
-  console.log(buttonClassnames)
-
   return (
     <span onClick={onClick} className="button--span">
       <button className={buttonClassnames}>{children}</button>

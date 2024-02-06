@@ -12,6 +12,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
-const db = getFirestore(app)
-// export const notesCollection = collection(db, "shoppingList")
+export const db = getFirestore(app)
 export const shoppingListCollection = collection(db, "shoppingList")
