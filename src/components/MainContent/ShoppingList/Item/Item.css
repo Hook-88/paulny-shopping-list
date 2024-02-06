@@ -27,6 +27,15 @@ div.item--display p {
   text-decoration: line-through;
 }
 
+.edit {
+  background-color: red;
+}
+
+.edit > form > input {
+  padding: .7rem .5rem;
+  font-size: 1rem;
+}
+
 .item-edit--button {
   background-color: rgb(251, 221, 87);
 }

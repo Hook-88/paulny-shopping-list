@@ -1,21 +1,32 @@
 import ItemDisplay from "./ItemDisplay"
 import ItemDisplayRemove from "./ItemDisplayRemove"
 import "./Item.css"
-import { useContext } from "react"
+import { useContext, createContext } from "react"
 import { AppContext } from "../../../../App"
+
+const ItemContext = createContext()
 
 export default function Item({children, itemObj}) {
   const { checked, id } = itemObj
-  const { updateItem } = useContext(AppContext)
+
+  const displayItemEl = 
+    checked ? 
+      <ItemDisplayRemove itemID={id}>{children}</ItemDisplayRemove> :
+      <ItemDisplay>{children}</ItemDisplay>
+
 
   return (
-    <li className="item--container" onClick={() => updateItem(id, "checked", !checked)}>
-      {
-        checked ?
-          <ItemDisplayRemove itemID={id}>{children}</ItemDisplayRemove> :
+    <ItemContext.Provider value={{itemObj}}>
+      {/* <li className="item--container" onClick={() => updateItem(id, "checked", !checked)}> */}
+      <li className="item--container">
+        {
+          checked ?
+          <ItemDisplayRemove>{children}</ItemDisplayRemove> :
           <ItemDisplay>{children}</ItemDisplay>
-      } 
-    </li>
+        } 
+      </li>
+    </ItemContext.Provider>
   )
-
 }
+
+export { ItemContext }
