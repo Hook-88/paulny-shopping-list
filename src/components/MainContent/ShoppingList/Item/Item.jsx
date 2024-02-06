@@ -9,7 +9,7 @@ export default function Item({children, itemObj}) {
   const { updateItem } = useContext(AppContext)
 
   return (
-    <li className="item--container" onClick={() => updateItem(id, "checked")}>
+    <li className="item--container" onClick={() => updateItem(id, "checked", !checked)}>
       {
         checked ?
           <ItemDisplayRemove itemID={id}>{children}</ItemDisplayRemove> :

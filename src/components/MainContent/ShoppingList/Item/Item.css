@@ -10,6 +10,7 @@ li.item--container{
 div.item--display {
   display: grid;
   grid-template-columns: 8fr 1.3fr;
+  user-select: none;
 }
 
 div.item--display p {

@@ -5,7 +5,7 @@ import MainContent from "./components/MainContent/MainContent"
 import Form from "./components/MainContent/Form/Form"
 import Button from "./components/Button/Button"
 import ShoppingList from "./components/MainContent/ShoppingList/ShoppingList"
-import { onSnapshot, addDoc, doc, deleteDoc, updateDoc, getDoc  } from "firebase/firestore"
+import { onSnapshot, addDoc, doc, deleteDoc, updateDoc  } from "firebase/firestore"
 import { shoppingListCollection, db } from "./firebase"
 
 import './App.css'
@@ -26,19 +26,10 @@ function App() {
     await deleteDoc(docRef)
   }
 
-  async function updateItem(itemID, prop) {
-    if (prop === "checked") {
-      togglePropInDoc(itemID, prop)
-    }
-    
-
-  }
-
-  async function togglePropInDoc(itemID, prop) {
+  async function updateItem(itemID, prop, value) {
     const docRef = doc(db, "shoppingList", itemID)
-    const docSnap = await getDoc(docRef)
 
-    await updateDoc(docRef, {[prop]: !docSnap.data().checked})
+    await updateDoc(docRef, {[prop]: value})
 
   }
 
