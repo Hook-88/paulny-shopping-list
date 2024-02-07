@@ -1,12 +1,21 @@
+import { useContext } from "react"
+import { AppContext } from "../../../../App"
+import { ItemContext } from "./Item"
 import { FaRegTrashCan } from "react-icons/fa6"
 import Button from "../../../Button/Button"
 
 export default function ItemDisplayRemove({children}) {
+  const { updateItem } = useContext(AppContext)
+  const { id } = useContext(ItemContext)
+
+  function unCheckItem() {
+    updateItem(id, "checked", false)
+  }
   
   return (
     <>
-      <p>{children}</p>
-      <Button className="icon--btn" onClick={() => setOnEdit(true)}><FaRegTrashCan /></Button>
+      <p onClick={unCheckItem}>{children}</p>
+      <Button className="icon--btn" ><FaRegTrashCan /></Button>
     </>
   )
 }
