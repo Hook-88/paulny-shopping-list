@@ -27,6 +27,14 @@ export default function ItemDisplayNormal({children}) {
     setOnEdit(false)
   }
 
+  function handleEnterKeyPress(event) {
+    if (event.key === "Enter") {
+      saveChange()
+    }
+  }
+
+
+
   return (
     !onEdit ?
     <>
@@ -34,7 +42,7 @@ export default function ItemDisplayNormal({children}) {
       <Button className="icon--btn" onClick={() => setOnEdit(true)}><FaPenToSquare /></Button>
     </> : 
     <>
-      <input type="text" ref={inputRef} onChange={handleInputChange} value={getCapString(itemInput)}/>
+      <input type="text" ref={inputRef} onChange={handleInputChange} value={getCapString(itemInput)} onKeyUp={handleEnterKeyPress}/>
       <Button className="icon--btn edit" onClick={saveChange}><FaCheck /></Button>
     </>
   )
