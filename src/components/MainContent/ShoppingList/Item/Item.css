@@ -6,11 +6,11 @@ li.item--container{
   border-radius: 3px;
   overflow: hidden;
   display: flex;
-  justify-content: space-between;
 }
 
 li.item--container p {
   margin-left: .5rem;
+  width: 100%;
 }
 
 li.item--container input {
@@ -18,6 +18,11 @@ li.item--container input {
   padding: 1rem .4rem;
   font-size: 1rem;
   border: none;
+}
+
+li.item--container.remove {
+  background-color: rgb(225, 137, 137);
+  text-decoration: line-through;
 }
 
 button.icon--btn {
