@@ -27,7 +27,7 @@ li.item--container.checked {
   background-color: rgb(137, 225, 144);
   /* background-color: #28cd41; */
   text-decoration: line-through;
-  box-shadow: rgba(13, 13, 14, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
 .icon--btn {
@@ -38,7 +38,6 @@ li.item--container.checked {
 }
 
 span.delete--btn {
-  background-color: rgb(225, 137, 137);
+  background-color: transparent;
   border-radius: 0;
-  display: none;
 }

@@ -6,7 +6,7 @@ import Button from "../../../Button/Button"
 
 export default function ItemDisplayRemove({children}) {
   const { updateItem, deleteItem } = useContext(AppContext)
-  const { id } = useContext(ItemContext)
+  const { id, checked } = useContext(ItemContext)
 
   function unCheckItem() {
     updateItem(id, "checked", false)

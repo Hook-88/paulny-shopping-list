@@ -15,6 +15,11 @@ const AppContext = createContext()
 function App() {
   const [shoppingItems, setShoppingItems] = useState(null)
   const [newItem, setNewItem] = useState("")
+  const [showAddForm, setShowAddForm] = useState(true)
+
+  function toggleForm() {
+    setShowAddForm(prevShowAddForm => !prevShowAddForm)
+  }
   
   function handleSubmit(event) {
     event.preventDefault()
@@ -69,15 +74,18 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header handleClick={toggleForm}/>
       <AppContext.Provider value={{shoppingItems, deleteItem, updateItem}}>
         <MainContent>
+          {
+          showAddForm && 
           <Form onSubmit={handleSubmit} onChange={handleFormChange}>
             <input type="text" placeholder="Gaseosa..." className="form--text-input" value={newItem} onChange={handleFormChange} required/>
             <Button className="pill">
               Add to Shopping list
             </Button>
-          </Form>
+          </Form> 
+          }
 
           <ShoppingList />
 
