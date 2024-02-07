@@ -9,6 +9,7 @@ const ItemContext = createContext()
 export default function Item({children, itemObj}) {
   const { checked } = itemObj
   const liClassNames = classNames(
+    "card",
     "item--container",
     {"remove" : checked}
   )

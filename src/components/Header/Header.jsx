@@ -1,10 +1,8 @@
-import "./Header.css"
-
 export default function Header() {
 
   return (
-    <header className="app--header">
-      <h1>Here goes the Logo</h1>
+    <header className="card app--header">
+      <h1>Paulny Shopping List</h1>
     </header>
   )
 

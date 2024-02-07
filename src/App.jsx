@@ -25,7 +25,7 @@ function App() {
     const docRef = doc(db, "shoppingList", itemID)
     await deleteDoc(docRef)
   }
-
+// TODO add trim to string
   async function updateItem(itemID, prop, value) {
     const docRef = doc(db, "shoppingList", itemID)
 
@@ -73,8 +73,8 @@ function App() {
       <AppContext.Provider value={{shoppingItems, deleteItem, updateItem}}>
         <MainContent>
           <Form onSubmit={handleSubmit} onChange={handleFormChange}>
-            <input type="text" placeholder="Gaseosa..." className="form--text-input" value={newItem} onChange={handleFormChange}/>
-            <Button>
+            <input type="text" placeholder="Gaseosa..." className="form--text-input" value={newItem} onChange={handleFormChange} required/>
+            <Button className="pill">
               Add to Shopping list
             </Button>
           </Form>

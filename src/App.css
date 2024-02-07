@@ -6,3 +6,11 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
+
+.card {
+  margin: 1rem 0 0 0;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  padding: 1rem;
+}

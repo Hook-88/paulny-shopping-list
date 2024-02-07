@@ -15,7 +15,7 @@ export default function ShoppingList() {
     // if there are items on shopping list 
     sortedShoppingListItems ?
       sortedShoppingListItems.map(
-        item => <Item key={item.id} itemObj={item}>{getCapString(item.name)}</Item>
+        item => <Item key={item.id} itemObj={item}>{item.name ? getCapString(item.name) : ""}</Item>
       ) : null
   
   return (

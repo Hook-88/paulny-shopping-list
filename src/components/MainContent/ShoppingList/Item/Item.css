@@ -1,11 +1,10 @@
 li.item--container{
-  margin: 0 0 .5rem 0;
   text-align: left;
-  background-color: antiquewhite;
-  color: rgb(17, 16, 15);
-  border-radius: 3px;
-  overflow: hidden;
+  color: black;
   display: flex;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 li.item--container p {
@@ -13,7 +12,7 @@ li.item--container p {
   width: 100%;
   height: 100%;
   user-select: none;
-  padding: 1rem .5rem;
+  padding: 1rem 1.5rem;
 }
 
 li.item--container input {
@@ -28,7 +27,7 @@ li.item--container.remove {
   text-decoration: line-through;
 }
 
-button.icon--btn {
+.icon--btn {
   font-size: 1.2rem;
   padding: .8rem 1.3rem;
   background-color: transparent;
