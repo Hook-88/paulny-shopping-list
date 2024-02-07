@@ -5,7 +5,7 @@ import { FaRegTrashCan } from "react-icons/fa6"
 import Button from "../../../Button/Button"
 
 export default function ItemDisplayRemove({children}) {
-  const { updateItem } = useContext(AppContext)
+  const { updateItem, deleteItem } = useContext(AppContext)
   const { id } = useContext(ItemContext)
 
   function unCheckItem() {
@@ -15,7 +15,7 @@ export default function ItemDisplayRemove({children}) {
   return (
     <>
       <p onClick={unCheckItem}>{children}</p>
-      <Button className="icon--btn" ><FaRegTrashCan /></Button>
+      <Button className="icon--btn" onClick={() => deleteItem(id)}><FaRegTrashCan /></Button>
     </>
   )
 }
