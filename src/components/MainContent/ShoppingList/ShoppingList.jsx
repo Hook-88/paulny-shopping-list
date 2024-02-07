@@ -9,7 +9,7 @@ export default function ShoppingList() {
   const sortedShoppingListItems = shoppingItems ? [...shoppingItems] : []
   
   sortedShoppingListItems.sort((a, b) => a.name.localeCompare(b.name))
-    .sort((a, b) => a.checked - b.checked)
+    // .sort((a, b) => a.checked - b.checked)
   
   const shoppingListIemsEl =
     // if there are items on shopping list 
