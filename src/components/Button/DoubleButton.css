@@ -1,0 +1,5 @@
+.db-btn--container {
+  display: flex;
+  overflow: hidden;
+  border-radius: 2em;
+}

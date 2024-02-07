@@ -7,15 +7,18 @@ import Button from "./components/Button/Button"
 import ShoppingList from "./components/MainContent/ShoppingList/ShoppingList"
 import { onSnapshot, addDoc, doc, deleteDoc, updateDoc  } from "firebase/firestore"
 import { shoppingListCollection, db } from "./firebase"
+import { GoTriangleDown } from "react-icons/go"
+
 
 import './App.css'
+import DoubleButton from "./components/Button/DoubleButton"
  
 const AppContext = createContext()
 
 function App() {
   const [shoppingItems, setShoppingItems] = useState(null)
   const [newItem, setNewItem] = useState("")
-  const [showAddForm, setShowAddForm] = useState(true)
+  const [showAddForm, setShowAddForm] = useState(false)
 
   function toggleForm() {
     setShowAddForm(prevShowAddForm => !prevShowAddForm)
@@ -55,6 +58,7 @@ function App() {
     setNewItem(value)
   }
 
+//use effect for snapshot
   useEffect(() => {
     const unSubscribe = onSnapshot(shoppingListCollection, function(snapshot) {
       // sync up database with local state
@@ -81,9 +85,20 @@ function App() {
           showAddForm && 
           <Form onSubmit={handleSubmit} onChange={handleFormChange}>
             <input type="text" placeholder="Gaseosa..." className="form--text-input" value={newItem} onChange={handleFormChange} required/>
-            <Button className="pill">
-              Add to Shopping list
-            </Button>
+              <DoubleButton
+                style={
+                  {
+                    justifySelf: "end"
+                  }
+                }
+              >
+                <Button type="submit" variant="action">
+                  Add to Shopping list
+                </Button>
+                <Button className="neutral" type="button">
+                  <GoTriangleDown />
+                </Button>
+              </DoubleButton>
           </Form> 
           }
 
@@ -91,6 +106,9 @@ function App() {
 
         </MainContent>
       </AppContext.Provider>
+      
+
+      
       <Footer />
     </>
   )
