@@ -5,6 +5,7 @@ import MainContent from "./components/MainContent/MainContent"
 import Form from "./components/MainContent/Form/Form"
 import Button from "./components/Button/Button"
 import ShoppingList from "./components/MainContent/ShoppingList/ShoppingList"
+import TextInputField from "./components/TextInputField/TextInputField"
 import { onSnapshot, addDoc, doc, deleteDoc, updateDoc  } from "firebase/firestore"
 import { shoppingListCollection, db } from "./firebase"
 import { GoTriangleDown } from "react-icons/go"
@@ -84,7 +85,8 @@ function App() {
           {
           showAddForm && 
           <Form onSubmit={handleSubmit} onChange={handleFormChange}>
-            <input type="text" placeholder="Gaseosa..." className="form--text-input" value={newItem} onChange={handleFormChange} required/>
+            {/* <input type="text"  className="form--text-input" /> */}
+            <TextInputField placeholder="Gaseosa..." value={newItem} onChange={handleFormChange} variant="pill" required />
               <DoubleButton
                 style={
                   {

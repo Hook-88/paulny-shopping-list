@@ -1,0 +1,16 @@
+.text-input--input {
+  font-size: 1rem;
+  border: none;
+  padding: .6em 1em;
+  background-color: #f7f7f8;
+  color: #b3b3b3;
+}
+
+.text-input--input:focus {
+  color: black;
+  outline: 2px solid #4a8290;
+}
+
+.text-input--input.pill {
+  border-radius: 2em;
+}
