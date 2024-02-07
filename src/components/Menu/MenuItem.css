@@ -1,0 +1,8 @@
+.menu--item {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.menu--item:last-child {
+  border: none;
+}

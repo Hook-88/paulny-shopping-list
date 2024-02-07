@@ -8,9 +8,8 @@ export default function TextInputField({className, variant, ...rest}) {
     variant,
     className
   )
-
   return (
-    <input type="text" className={inputClassName} {...rest} />
+    <input type="text" className={inputClassName} {...rest} autoFocus />
   )
   
 }

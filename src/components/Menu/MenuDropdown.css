@@ -1,0 +1,14 @@
+.menu-dropdown--container {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  border-radius: .5em;
+  overflow: hidden;
+}
+
+.menu-dropdown--container.card {
+  padding: 0;
+}

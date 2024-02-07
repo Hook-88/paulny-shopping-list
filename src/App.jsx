@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState, useEffect, useRef } from "react"
 import Footer from "./components/Footer/Footer"
 import Header from "./components/Header/Header"
 import MainContent from "./components/MainContent/MainContent"
@@ -6,6 +6,7 @@ import Form from "./components/MainContent/Form/Form"
 import Button from "./components/Button/Button"
 import ShoppingList from "./components/MainContent/ShoppingList/ShoppingList"
 import TextInputField from "./components/TextInputField/TextInputField"
+import Menu from "./components/Menu/Index"
 import { onSnapshot, addDoc, doc, deleteDoc, updateDoc  } from "firebase/firestore"
 import { shoppingListCollection, db } from "./firebase"
 import { GoTriangleDown } from "react-icons/go"
@@ -20,9 +21,11 @@ function App() {
   const [shoppingItems, setShoppingItems] = useState(null)
   const [newItem, setNewItem] = useState("")
   const [showAddForm, setShowAddForm] = useState(false)
+  const AddItemInputRef = useRef()
 
   function toggleForm() {
     setShowAddForm(prevShowAddForm => !prevShowAddForm)
+    console.log(AddItemInputRef)
   }
   
   function handleSubmit(event) {
@@ -84,23 +87,31 @@ function App() {
         <MainContent>
           {
           showAddForm && 
-          <Form onSubmit={handleSubmit} onChange={handleFormChange}>
+          <Form onSubmit={handleSubmit} onChange={handleFormChange} style={{position:"relative"}}>
             {/* <input type="text"  className="form--text-input" /> */}
-            <TextInputField placeholder="Gaseosa..." value={newItem} onChange={handleFormChange} variant="pill" required />
-              <DoubleButton
-                style={
-                  {
-                    justifySelf: "end"
-                  }
+            <TextInputField placeholder="Gaseosa..." value={newItem} onChange={handleFormChange} variant="pill" required/>
+            <DoubleButton
+              style={
+                {
+                  justifySelf: "end"
                 }
-              >
-                <Button type="submit" variant="action">
-                  Add to Shopping list
-                </Button>
-                <Button className="neutral" type="button">
-                  <GoTriangleDown />
-                </Button>
-              </DoubleButton>
+              }
+            >
+              <Button type="submit" variant="action">
+                Add to Shopping list
+              </Button>
+              <Menu>
+                <Menu.Button type="button" className="neutral">
+                    <GoTriangleDown />
+                </Menu.Button>
+                <Menu.DropDown>
+                <Menu.Item>hello</Menu.Item>
+                <Menu.Item>bye</Menu.Item>
+                </Menu.DropDown>
+              </Menu>
+
+              
+            </DoubleButton>
           </Form> 
           }
 
