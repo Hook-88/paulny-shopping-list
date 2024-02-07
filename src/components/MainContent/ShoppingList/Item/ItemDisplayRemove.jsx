@@ -15,7 +15,7 @@ export default function ItemDisplayRemove({children}) {
   return (
     <>
       <p onClick={unCheckItem}>{children}</p>
-      <Button className="icon--btn" onClick={() => deleteItem(id)}><FaRegTrashCan /></Button>
+      <Button className="icon--btn delete--btn" onClick={() => deleteItem(id)}><FaRegTrashCan /></Button>
     </>
   )
 }

@@ -11,7 +11,7 @@ export default function Item({children, itemObj}) {
   const liClassNames = classNames(
     "card",
     "item--container",
-    {"remove" : checked}
+    {"checked" : checked}
   )
 
   return (

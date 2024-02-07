@@ -22,9 +22,12 @@ li.item--container input {
   border: none;
 }
 
-li.item--container.remove {
-  background-color: rgb(225, 137, 137);
+li.item--container.checked {
+  /* background-color: rgb(225, 137, 137); */
+  background-color: rgb(137, 225, 144);
+  /* background-color: #28cd41; */
   text-decoration: line-through;
+  box-shadow: rgba(13, 13, 14, 0.2) 0px 7px 29px 0px;
 }
 
 .icon--btn {
@@ -34,6 +37,8 @@ li.item--container.remove {
   color: rgb(17, 16, 15);
 }
 
-button.icon--btn.edit {
-  background-color: white;
+span.delete--btn {
+  background-color: rgb(225, 137, 137);
+  border-radius: 0;
+  display: none;
 }
