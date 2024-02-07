@@ -4,8 +4,9 @@
 }
 
 .db-btn--container > button:first-child {
-  border-top-left-radius: 2em;
-  border-bottom-left-radius: 2em;
+  /* border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em; */
+  border-radius: 2em;
 }
 
 .db-btn--container .menu--container > button:first-child {

@@ -100,7 +100,7 @@ function App() {
               <Button type="submit" variant="action">
                 Add to Shopping list
               </Button>
-              <Menu>
+              {/* <Menu>
                 <Menu.Button type="button" className="neutral">
                     <GoTriangleDown />
                 </Menu.Button>
@@ -108,7 +108,7 @@ function App() {
                 <Menu.Item>hello</Menu.Item>
                 <Menu.Item>bye</Menu.Item>
                 </Menu.DropDown>
-              </Menu>
+              </Menu> */}
 
               
             </DoubleButton>
