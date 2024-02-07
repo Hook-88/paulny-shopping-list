@@ -1,10 +1,11 @@
-import { useState, useContext, useRef } from "react"
+import { useState, useContext, useRef, useEffect } from "react"
 import { AppContext } from "../../../../App"
 import { ItemContext } from "./Item"
 import { FaPenToSquare } from "react-icons/fa6"
 import { FaCheck } from "react-icons/fa6"
 import getCapString from "../../../../utility/getCapString"
 import Button from "../../../Button/Button"
+import ItemEditForm from "./ItemEditForm"
 
 
 export default function ItemDisplayNormal({children}) {
@@ -12,7 +13,7 @@ export default function ItemDisplayNormal({children}) {
   const [onEdit, setOnEdit] = useState(false)
   const [itemInput, setItemInput] = useState(name)
   const { updateItem } = useContext(AppContext)
-  const inputRef = useRef(null)
+  const inputRef = useRef()
 
   function checkItem() {
     updateItem(id, "checked", true)
@@ -27,24 +28,27 @@ export default function ItemDisplayNormal({children}) {
     setOnEdit(false)
   }
 
-  function handleEnterKeyPress(event) {
-    if (event.key === "Enter") {
-      saveChange()
-    }
+  function showEditItem() {
+    setOnEdit(true)
   }
-
-
 
   return (
     !onEdit ?
     <>
       <p onClick={checkItem}>{children}</p>
-      <Button className="icon--btn" onClick={() => setOnEdit(true)}><FaPenToSquare /></Button>
+      <Button className="icon--btn" onClick={showEditItem}><FaPenToSquare /></Button>
     </> : 
-    <>
-      <input type="text" ref={inputRef} onChange={handleInputChange} value={getCapString(itemInput)} onKeyUp={handleEnterKeyPress}/>
+    <form
+      style={
+        {
+          display: "flex",
+          width: "100%"
+        }
+      }
+    >
+      <input type="text" ref={inputRef} onChange={handleInputChange} value={getCapString(itemInput)}/>
       <Button className="icon--btn edit" onClick={saveChange}><FaCheck /></Button>
-    </>
+    </form>
   )
   
 }
