@@ -73,7 +73,7 @@ function App() {
       <AppContext.Provider value={{shoppingItems, deleteItem, updateItem}}>
         <MainContent>
           <Form onSubmit={handleSubmit} onChange={handleFormChange}>
-            <input type="text" placeholder="Gaseosa..." className="form--text-input" value={newItem}/>
+            <input type="text" placeholder="Gaseosa..." className="form--text-input" value={newItem} onChange={handleFormChange}/>
             <Button>
               Add to Shopping list
             </Button>

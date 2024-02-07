@@ -5,7 +5,7 @@ import { AppContext } from "../../../../App"
 import getCapString from "../../../../utility/getCapString"
 import Button from "../../../Button/Button"
 
-export default function ItemEditForm() {
+export default function ItemEditForm({hide}) {
   const { name, id } = useContext(ItemContext)
   const { updateItem } = useContext(AppContext)
   const [inputText, setInputText] = useState(name)
@@ -19,9 +19,10 @@ export default function ItemEditForm() {
     setInputText(event.target.value)
   }
 
-  function saveChange() {
+  function saveChange(event) {
+    event.preventDefault()
     updateItem(id, "name", inputText)
-    // setOnEdit(false)
+    hide()
   }
 
   return (
@@ -32,9 +33,10 @@ export default function ItemEditForm() {
           width: "100%"
         }
       }
+      onSubmit={saveChange}
     >
-      <input type="text" ref={inputRef} onChange={handleInputChange} value={getCapString(inputText)}/>
-      <Button className="icon--btn edit" onClick={saveChange}><FaCheck /></Button>
+      <input type="text" ref={inputRef} onChange={handleInputChange} value={inputText ? getCapString(inputText) : ""}/>
+      <Button className="icon--btn edit"><FaCheck /></Button>
     </form>
   )
   
