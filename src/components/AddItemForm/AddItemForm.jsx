@@ -12,8 +12,8 @@ export default function AddItemForm() {
 
   return (
     <Form onSubmit={handleSubmit} style={{position:"relative"}}>
-      <TextInputField placeholder="Gaseosa..." value={newItem} onChange={handleFormChange} variant="pill" required/>
-      <DoubleButton
+      <TextInputField placeholder="add item..." value={newItem} onChange={handleFormChange} variant="pill" required/>
+      {/* <DoubleButton
         style={
           {
             justifySelf: "end"
@@ -33,7 +33,7 @@ export default function AddItemForm() {
         </Menu>
 
         
-      </DoubleButton>
+      </DoubleButton> */}
     </Form> 
   )
   
