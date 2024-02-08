@@ -1,20 +1,5 @@
-.app-menu--container {
-  display: flex;
-  gap: 1px;
-  justify-content: center;
-  margin-bottom: .3rem;
-}
 
-.app-menu--container button {
-  flex-grow: 1;
-}
 
-.app-menu--container button:first-child {
-  border-bottom-left-radius: 1em;
-  border-top-left-radius: 1em;
-}
-
-.app-menu--container button:last-child {
-  border-bottom-right-radius: 1em;
-  border-top-right-radius: 1em;
+.app-menu--container .menu--container {
+  height: 100%;
 }

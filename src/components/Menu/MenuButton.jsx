@@ -5,8 +5,13 @@ import { MenuContext } from "./Menu"
 export default function MenuButton({children, ...rest}) {
   const { toggle } = useContext(MenuContext)
 
+  function handleClick(event) {
+    event.stopPropagation()
+    toggle()
+  }
+
   return (
-    <Button {...rest} onClick={toggle} style={{height: "100%"}}>
+    <Button {...rest} onClick={handleClick} style={{height: "100%"}}>
       {children}
     </Button>
   )

@@ -1,6 +1,5 @@
 form.form--container {
   display: grid;
-  gap: .7rem;
 }
 
 form.form--container input.form--text-input {

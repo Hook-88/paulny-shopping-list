@@ -4,7 +4,7 @@ import MenuDropdown from "./MenuDropdown"
 import MenuItem from "./MenuItem"
 
 Menu.Button = MenuButton
-Menu.DropDown = MenuDropdown
+Menu.Dropdown = MenuDropdown
 Menu.Item = MenuItem
 
 export default Menu

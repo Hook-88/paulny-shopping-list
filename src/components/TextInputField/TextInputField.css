@@ -14,3 +14,9 @@
 .text-input--input.pill {
   border-radius: 2em;
 }
+
+.text-input--input.pill-left {
+  border-radius: 0;
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
+}

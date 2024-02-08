@@ -7,6 +7,7 @@ import { onSnapshot, addDoc, doc, deleteDoc, updateDoc  } from "firebase/firesto
 import { shoppingListCollection, db } from "./firebase"
 import AddItemForm from "./components/AddItemForm/AddItemForm"
 import './App.css'
+import AppMenu from "./components/AppMenu/AppMenu"
  
 const AppContext = createContext()
 
@@ -89,6 +90,7 @@ function App() {
           <ShoppingList />
         </MainContent>
       </AppContext.Provider>
+      {/* <AppMenu /> */}
       <Footer />
     </>
   )

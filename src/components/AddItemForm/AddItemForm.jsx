@@ -6,12 +6,14 @@ import Menu from "../Menu/Index"
 import { AppContext } from "../../App"
 import { useContext } from "react"
 import { GoTriangleDown } from "react-icons/go"
+import AppMenu from "../AppMenu/AppMenu"
+import "./AddItemForm.css"
 
 export default function AddItemForm() {
   const { handleSubmit, handleFormChange, newItem, deleteCheckedItems } = useContext(AppContext)
 
   return (
-    <Form onSubmit={handleSubmit} style={{position:"relative"}}>
+    <Form onSubmit={handleSubmit} className="add-item--form">
       <TextInputField placeholder="add item..." value={newItem} onChange={handleFormChange} variant="pill" required/>
       {/* <DoubleButton
         style={
