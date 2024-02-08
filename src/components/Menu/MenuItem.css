@@ -1,6 +1,7 @@
 .menu--item {
   width: 100%;
   border-bottom: 1px solid black;
+  white-space: nowrap;
 }
 
 .menu--item:last-child {
