@@ -8,7 +8,7 @@ export default function MenuDropdown({children}) {
 
   return (
     on ?
-    <ul className="menu-dropdown--container card">
+    <ul className="menu-dropdown--container card" onClick={event => event.stopPropagation()}>
       {children}
     </ul> : null
   )

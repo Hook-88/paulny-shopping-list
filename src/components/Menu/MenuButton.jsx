@@ -11,9 +11,9 @@ export default function MenuButton({children, ...rest}) {
   }
 
   return (
-    <Button {...rest} onClick={handleClick} style={{height: "100%"}}>
+    <div {...rest} onClick={handleClick}>
       {children}
-    </Button>
+    </div>
   )
   
 }

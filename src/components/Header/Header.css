@@ -8,3 +8,11 @@ header p {
   margin: 0 1.3rem 0 0;
   user-select: none;
 }
+
+.app--menu {
+  margin-left: auto;
+}
+
+.app--menu .menu-dropdown--container {
+  top: 10px;
+}

@@ -20,7 +20,6 @@ function App() {
     setShowAddForm(prevShowAddForm => !prevShowAddForm)
   }
 
-  
   function handleSubmit(event) {
     event.preventDefault()
     AddItemToShoppingList()
@@ -83,8 +82,21 @@ function App() {
 
   return (
     <>
-      <Header handleClick={toggleForm}/>
-      <AppContext.Provider value={{shoppingItems, deleteItem, updateItem, handleSubmit, handleFormChange, newItem, deleteCheckedItems}}>
+      
+      <AppContext.Provider 
+        value={{
+          shoppingItems, 
+          deleteItem, 
+          updateItem, 
+          handleSubmit, 
+          handleFormChange, 
+          newItem, 
+          deleteCheckedItems,
+          showAddForm,
+          toggleForm
+        }}
+      >
+        <Header handleClick={toggleForm}/>
         <MainContent>
           { showAddForm && <AddItemForm /> }
           <ShoppingList />

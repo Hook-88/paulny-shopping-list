@@ -1,10 +1,15 @@
+import classNames from "classnames"
 import { createContext, useState } from "react"
 import "./Menu.css"
 
 const MenuContext = createContext()
 
-export default function Menu({children}) {
+export default function Menu({children, className}) {
   const [on, setOn] = useState(false)
+  const divClassName = classNames (
+    "menu--container",
+    className
+  )
 
   function toggle() {
     setOn(prevOn => !prevOn)
@@ -12,7 +17,7 @@ export default function Menu({children}) {
 
   return (
     <MenuContext.Provider value={{on, toggle}}>
-      <div className="menu--container">
+      <div className={divClassName}>
         {children}
       </div>
     </MenuContext.Provider>

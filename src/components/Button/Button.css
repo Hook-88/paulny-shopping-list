@@ -19,3 +19,13 @@
   background-color: #4a8290;
   color: #f7f7f8;
 }
+
+.transparant {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.normal-font {
+  font-weight: 400;
+}

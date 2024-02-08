@@ -4,14 +4,8 @@ import "./MenuItem.css"
 export default function MenuItem({children, onClick}) {
 
   return (
-    <Button 
-      className="menu--item" 
-      type="button"
-      onClick={onClick}
-    >
+    <div className="menu--item" onClick={onClick}>
       {children}
-    
-    </Button>
+    </div>
   )
-  
 }
