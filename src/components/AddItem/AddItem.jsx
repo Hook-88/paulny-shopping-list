@@ -1,5 +1,6 @@
 import { useState, useContext } from "react"
 import { ShoppingListContext } from "../../pages/ShoppingListPage"
+import TextInput from "../TextInput/TextInput"
 import Card from "../Card/Card"
 
 export default function AddItem() {
@@ -20,7 +21,7 @@ export default function AddItem() {
     return (
         <Card>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Gaseoas" onChange={handleFormChange} value={formData}/>
+                <TextInput placeholder="Gaseoas" onChange={handleFormChange} value={formData}/>
             </form>
         </Card>
     )

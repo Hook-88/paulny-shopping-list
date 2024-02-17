@@ -1,0 +1,14 @@
+input.text-input {
+    width: 100%;
+    padding: .5rem 0 .5rem 1rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    border: none;
+    background-color: #f7f7f8;
+}
+
+input.text-input:focus, 
+input.text-input:active {
+    background-color: #fff;
+    /* outline: #49828f; */
+}
