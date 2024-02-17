@@ -1,4 +1,6 @@
 import { MdCheckBoxOutlineBlank } from "react-icons/md"
+import { MdCheckBox } from "react-icons/md";
+import { FaRegTrashCan } from "react-icons/fa6";
 import "./ShoppingListItem.css"
 
 export default function ShoppingListItem({children}) {
@@ -14,6 +16,7 @@ export default function ShoppingListItem({children}) {
                 }
             />
             {children}
+            <FaRegTrashCan />
         </li>
     )
 }

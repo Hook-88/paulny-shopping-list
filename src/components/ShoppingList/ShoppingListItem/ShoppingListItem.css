@@ -6,3 +6,10 @@ li.shopping-list-item {
     gap: .5rem;
     font-size: 1rem;
 }
+
+li.shopping-list-item > *:last-child {
+    margin-left: auto;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: red;
+}
