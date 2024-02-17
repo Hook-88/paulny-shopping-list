@@ -4,6 +4,8 @@ import { onSnapshot, doc, addDoc } from "firebase/firestore"
 import { db, shoppingListCollection } from "../firebase"
 import AddItem from "../components/AddItem/AddItem"
 import PageHeader from "../components/PageHeader/PageHeader"
+import ShoppingList from "../components/ShoppingList/ShoppingList"
+import ShoppingListItem from "../components/ShoppingList/ShoppingListItem/ShoppingListitem"
 
 const ShoppingListContext = createContext()
 
@@ -36,6 +38,15 @@ export default function ShoppingListPage() {
             <ShoppingListContext.Provider value={{addNewItem}}>
                 <PageHeader>Shopping list</PageHeader>
                 <AddItem />
+
+                {
+                    shoppingListItems ?
+                    <ShoppingList>
+                        {shoppingListItems.map(item => (
+                            <ShoppingListItem key={item.id} item={item}>{item.name}</ShoppingListItem>
+                        ))}
+                    </ShoppingList> : null
+                }
 
                 <NavLink to="..">
                     <h4>Back to main</h4>
