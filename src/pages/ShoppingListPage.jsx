@@ -11,6 +11,11 @@ const ShoppingListContext = createContext()
 
 export default function ShoppingListPage() {
     const [shoppingListItems, setShoppingListItems] = useState(null)
+    const [showAddItem, setShowAddItem] = useState(false)
+
+    function toggleAddItem() {
+        setShowAddItem(prevShowItem => !prevShowItem)
+    }
 
     useEffect(() => {
         const unsubscribe = onSnapshot(shoppingListCollection, (snapshot) => {
@@ -36,18 +41,27 @@ export default function ShoppingListPage() {
     return (
         <>
             <ShoppingListContext.Provider value={{addNewItem}}>
-                <PageHeader>Shopping list</PageHeader>
-                <AddItem />
+                <PageHeader onClick={toggleAddItem}>Shopping list</PageHeader>
+                <main style={
+                    {
+                        padding: "0 1rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "1rem"
+                    }
+                }>
+                    {showAddItem && <AddItem />}
 
-                {
-                    shoppingListItems ?
-                    <ShoppingList>
-                        {shoppingListItems.map(item => (
-                            <ShoppingListItem key={item.id} item={item}>{item.name}</ShoppingListItem>
-                        ))}
-                    </ShoppingList> : null
-                }
+                    {
+                        shoppingListItems ?
+                        <ShoppingList>
+                            {shoppingListItems.map(item => (
+                                <ShoppingListItem key={item.id} item={item}>{item.name}</ShoppingListItem>
+                                ))}
+                        </ShoppingList> : null
+                    }
 
+                </main>
                 <NavLink to="..">
                     <h4>Back to main</h4>
                 </NavLink>

@@ -10,5 +10,6 @@ input.text-input {
 input.text-input:focus, 
 input.text-input:active {
     background-color: #fff;
-    /* outline: #49828f; */
+    outline: 2px solid #4a8290;
+    color: black;
 }
