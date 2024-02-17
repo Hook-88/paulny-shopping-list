@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import AddItem from "./components/AddItem/AddItem"
-import AppLayout from "./components/AppLayout"
+import HomePage from "./pages/HomePage"
+import ShoppingListPage from "./pages/ShoppingListPage"
+import RecipePage from "./pages/RecipePage"
 import "./App.css"
 
 function App() {
@@ -9,9 +10,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AppLayout />}>
-          <Route index element={<Header />}/>
-        </Route>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shopping-list" element={<ShoppingListPage />} />
 
       </Routes>
     </BrowserRouter>
