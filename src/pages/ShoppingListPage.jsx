@@ -2,20 +2,18 @@ import { useEffect, useState, createContext } from "react"
 import { NavLink } from "react-router-dom"
 import { onSnapshot, doc, addDoc } from "firebase/firestore"
 import { db, shoppingListCollection } from "../firebase"
+import useToggle from "../Hooks/useToggle"
 import AddItem from "../components/AddItem/AddItem"
 import PageHeader from "../components/PageHeader/PageHeader"
 import ShoppingList from "../components/ShoppingList/ShoppingList"
 import ShoppingListItem from "../components/ShoppingList/ShoppingListItem/ShoppingListitem"
+import getStrFirstCharCap from "../Utility/getStrFirstCharCap"
 
 const ShoppingListContext = createContext()
 
 export default function ShoppingListPage() {
     const [shoppingListItems, setShoppingListItems] = useState(null)
-    const [showAddItem, setShowAddItem] = useState(false)
-
-    function toggleAddItem() {
-        setShowAddItem(prevShowItem => !prevShowItem)
-    }
+    const [showAddItem, toggleAddItem] = useToggle(false)
 
     useEffect(() => {
         const unsubscribe = onSnapshot(shoppingListCollection, (snapshot) => {
@@ -56,7 +54,7 @@ export default function ShoppingListPage() {
                         shoppingListItems ?
                         <ShoppingList>
                             {shoppingListItems.map(item => (
-                                <ShoppingListItem key={item.id} item={item}>{item.name}</ShoppingListItem>
+                                <ShoppingListItem key={item.id} item={item}>{getStrFirstCharCap(item.name)}</ShoppingListItem>
                                 ))}
                         </ShoppingList> : null
                     }

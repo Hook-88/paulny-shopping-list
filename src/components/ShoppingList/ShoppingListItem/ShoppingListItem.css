@@ -1,4 +1,8 @@
 li.shopping-list-item {
     padding: .5rem 0;
     border-bottom: 1px solid #efeadd;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1rem;
 }
