@@ -1,11 +1,16 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { ShoppingListContext } from "../../pages/ShoppingListPage"
 import Card from "../Card/Card"
 
 export default function AddItem() {
-    const [formData, setFormData] = useState(null)
+    const [formData, setFormData] = useState("")
+    const { addNewItem } = useContext(ShoppingListContext)
 
     function handleSubmit(event) {
-        event.preventDefault()  
+        event.preventDefault()
+        addNewItem(formData)
+        setFormData("")
+
     }
 
     function handleFormChange(event) {
