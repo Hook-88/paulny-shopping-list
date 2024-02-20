@@ -33,7 +33,7 @@ export default function ShoppingListPage() {
         const newItem = {
             name: value
         }
-        const newNoteRef = await addDoc(shoppingListCollection, newItem)
+        const newItemRef = await addDoc(shoppingListCollection, newItem)
     }
 
     return (
@@ -51,7 +51,7 @@ export default function ShoppingListPage() {
                     {showAddItem && <AddItem />}
 
                     {
-                        shoppingListItems ?
+                        shoppingListItems &&  shoppingListItems.length > 0 ?
                         <ShoppingList>
                             {shoppingListItems.map(item => (
                                 <ShoppingListItem key={item.id} item={item}>{getStrFirstCharCap(item.name)}</ShoppingListItem>
