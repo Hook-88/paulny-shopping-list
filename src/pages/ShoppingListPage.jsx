@@ -2,6 +2,8 @@ import { useEffect, useState, createContext } from "react"
 import { NavLink } from "react-router-dom"
 import { onSnapshot, doc, addDoc, deleteDoc, setDoc, updateDoc, getDoc } from "firebase/firestore"
 import { db, shoppingListCollection } from "../firebase"
+import { FaSortDown } from "react-icons/fa6"
+import { FaSortUp } from "react-icons/fa6"
 import useToggle from "../Hooks/useToggle"
 import AddItem from "../components/AddItem/AddItem"
 import PageHeader from "../components/PageHeader/PageHeader"
@@ -40,7 +42,7 @@ export default function ShoppingListPage() {
         if (shoppingListItems && shoppingListItems.length > 0) {
             const hasItemChecked = shoppingListItems.some(item => item.checked === true)
             
-            if(hasItemChecked) {
+            if(hasItemChecked && shoppingListItems.length > 0) {
                 setItemsChecked(true)
 
             } else {
@@ -87,13 +89,38 @@ export default function ShoppingListPage() {
         })
     }
 
+    function uncheckItems() {
+        shoppingListItems.forEach(item => {
+            
+            if (item.checked) {
+                toggleCheckItem(item.id)
+            }
+
+        })
+    }
+
     return (
         <>
-            <ShoppingListContext.Provider value={{addNewItem, deleteItem, toggleCheckItem, updateItemName, deleteItems}}>
-                <PageHeader onClick={toggleAddItem}>Shopping list</PageHeader>
+            <ShoppingListContext.Provider value={{addNewItem, deleteItem, toggleCheckItem, uncheckItems, updateItemName, deleteItems}}>
+                <PageHeader onClick={toggleAddItem}>
+                    <h1
+                        style={
+                            {
+                                margin: ".3em 0 .6em 0"
+                            }
+                        }
+                    >
+                        Shopping list
+                    </h1>
+                    {
+                        showAddItem ? <FaSortUp /> : <FaSortDown />
+                    }
+                    
+                    
+                </PageHeader>
                 <main style={
                     {
-                        padding: "4rem .5rem 0 .5rem",
+                        padding: "5rem .5rem 0 .5rem",
                         display: "flex",
                         flexDirection: "column",
                         gap: "1rem",
