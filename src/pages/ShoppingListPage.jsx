@@ -77,9 +77,19 @@ export default function ShoppingListPage() {
 
     }
 
+    function deleteItems() {
+        shoppingListItems.forEach(item => {
+            
+            if (item.checked) {
+                deleteItem(item.id)
+            }
+
+        })
+    }
+
     return (
         <>
-            <ShoppingListContext.Provider value={{addNewItem, deleteItem, toggleCheckItem, updateItemName}}>
+            <ShoppingListContext.Provider value={{addNewItem, deleteItem, toggleCheckItem, updateItemName, deleteItems}}>
                 <PageHeader onClick={toggleAddItem}>Shopping list</PageHeader>
                 <main style={
                     {
@@ -105,14 +115,11 @@ export default function ShoppingListPage() {
                         itemsChecked && <MultiAction />
                     }
 
-
                 </main>
                 <NavLink to="..">
                     <h4>Back to main</h4>
                 </NavLink>
             </ShoppingListContext.Provider>
-
-            
         </>
     )
 }
