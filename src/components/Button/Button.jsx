@@ -1,9 +1,10 @@
 import classNames from "classnames"
-import "./Button.css"
+import ButtonCSS from "./Button.module.css"
 
 export default function Button({children, onClick, className, variant, ...rest}) {
     const buttonClassName = classNames(
-        "button",
+        ButtonCSS.button,
+        ButtonCSS[variant],
         className
     )
 

@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+    padding: 0;
+    gap: .5rem;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.wrapper > * {
+    flex-grow: 1;
+}
+

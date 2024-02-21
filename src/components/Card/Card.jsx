@@ -1,10 +1,10 @@
 import classNames from "classnames"
 
-import "./Card.css"
+import CardCSS from "./Card.module.css"
 
 export default function Card({children, className, ...rest}) {
     const cardClassName = classNames(
-        "card",
+        CardCSS.card,
         className
     )
 

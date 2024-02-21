@@ -7,7 +7,8 @@ import AddItem from "../components/AddItem/AddItem"
 import PageHeader from "../components/PageHeader/PageHeader"
 import ShoppingList from "../components/ShoppingList/ShoppingList"
 import ShoppingListItem from "../components/ShoppingList/ShoppingListItem/ShoppingListitem"
-import getStrFirstCharCap from "../Utility/getStrFirstCharCap"
+import MultiAction from "../components/MultiAction/MultiAction"
+
 
 const ShoppingListContext = createContext()
 
@@ -71,10 +72,10 @@ export default function ShoppingListPage() {
                         display: "flex",
                         flexDirection: "column",
                         gap: "1rem",
-                        backgroundColor: "#efeadd"
                     }
                 }>
                     {showAddItem && <AddItem />}
+                    
 
                     {
                         shoppingListItems &&  shoppingListItems.length > 0 ?
@@ -84,6 +85,8 @@ export default function ShoppingListPage() {
                                 ))}
                         </ShoppingList> : null
                     }
+
+                    <MultiAction />
 
                 </main>
                 <NavLink to="..">
