@@ -8,10 +8,10 @@ import Button from "../../Button/Button"
 import "./ShoppingListItem.css"
 
 export default function ShoppingListItem({children, item}) {
-    const { deleteItem } = useContext(ShoppingListContext)
+    const { deleteItem, toggleCheckItem } = useContext(ShoppingListContext)
 
     return (
-        <li className="shopping-list-item">
+        <li className="shopping-list-item" onClick={() => toggleCheckItem(item.id)}>
             <MdCheckBoxOutlineBlank 
                 style={
                     {

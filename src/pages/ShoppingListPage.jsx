@@ -1,6 +1,6 @@
 import { useEffect, useState, createContext } from "react"
 import { NavLink } from "react-router-dom"
-import { onSnapshot, doc, addDoc, deleteDoc } from "firebase/firestore"
+import { onSnapshot, doc, addDoc, deleteDoc, setDoc, updateDoc, getDoc } from "firebase/firestore"
 import { db, shoppingListCollection } from "../firebase"
 import useToggle from "../Hooks/useToggle"
 import AddItem from "../components/AddItem/AddItem"
@@ -31,7 +31,8 @@ export default function ShoppingListPage() {
 
     async function addNewItem(value) {
         const newItem = {
-            name: value
+            name: value,
+            checked: false
         }
         const newItemRef = await addDoc(shoppingListCollection, newItem)
     }
@@ -41,11 +42,18 @@ export default function ShoppingListPage() {
         await deleteDoc(docRef)
     }
 
+    async function toggleCheckItem(itemId) {
+        const docRef = doc(db, "shoppingList", itemId)
+        // get snap of doc to get current checked value 
+        const docSnap = await getDoc(docRef)
+        await updateDoc(docRef, {checked: !docSnap.data().checked}) 
+    }
+
 
 
     return (
         <>
-            <ShoppingListContext.Provider value={{addNewItem, deleteItem}}>
+            <ShoppingListContext.Provider value={{addNewItem, deleteItem, toggleCheckItem}}>
                 <PageHeader onClick={toggleAddItem}>Shopping list</PageHeader>
                 <main style={
                     {
