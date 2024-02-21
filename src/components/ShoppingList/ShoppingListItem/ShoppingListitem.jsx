@@ -1,4 +1,5 @@
 import { useState, useContext } from "react"
+import classNames from "classnames"
 import useToggle from "../../../Hooks/useToggle"
 import { MdCheckBoxOutlineBlank } from "react-icons/md"
 import { MdCheckBox } from "react-icons/md"
@@ -9,20 +10,29 @@ import "./ShoppingListItem.css"
 
 export default function ShoppingListItem({children, item}) {
     const { deleteItem, toggleCheckItem } = useContext(ShoppingListContext)
+    const { id, checked } = item
+    const spanClassName = classNames(
+        "shopping-list-item--span", 
+        {"checked" : checked}
+    )
+
+    function handleDelete(event) {
+        event.stopPropagation()
+        deleteItem(id)
+    }
 
     return (
-        <li className="shopping-list-item" onClick={() => toggleCheckItem(item.id)}>
-            <MdCheckBoxOutlineBlank 
-                style={
-                    {
-                        fontSize: "1.5rem"
-                    }
-                }
-            /> 
-            <span className="shopping-list-item--span">
+        <li className="shopping-list-item" onClick={() => toggleCheckItem(id)}>
+            {
+                checked ? 
+                <MdCheckBox /> :
+                <MdCheckBoxOutlineBlank />
+            }
+            
+            <span className={spanClassName}>
                 {children}
             </span>
-            <Button variant="no-button" onClick={() => deleteItem(item.id)}><FaRegTrashCan /></Button>
+            <Button variant="no-button" onClick={handleDelete}><FaRegTrashCan /></Button>
         </li>
     )
 }

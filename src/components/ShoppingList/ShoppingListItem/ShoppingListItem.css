@@ -14,8 +14,17 @@ li.shopping-list-item > *:last-child {
     cursor: pointer;
 }
 
+li.shopping-list-item > *:first-child {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
 .shopping-list-item--span {
     padding: .5em 0;
+}
+
+.shopping-list-item--span.checked {
+    text-decoration: line-through;
 }
 
 li.shopping-list-item .button {
