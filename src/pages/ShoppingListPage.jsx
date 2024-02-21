@@ -15,6 +15,7 @@ const ShoppingListContext = createContext()
 export default function ShoppingListPage() {
     const [shoppingListItems, setShoppingListItems] = useState(null)
     const [showAddItem, toggleAddItem] = useToggle(false)
+    const [itemsChecked, setItemsChecked] = useState(false)
 
     useEffect(() => {
         const unsubscribe = onSnapshot(shoppingListCollection, (snapshot) => {
@@ -34,6 +35,20 @@ export default function ShoppingListPage() {
 
         return unsubscribe
     },[])
+
+    useEffect(() => {
+        if (shoppingListItems && shoppingListItems.length > 0) {
+            const hasItemChecked = shoppingListItems.some(item => item.checked === true)
+            
+            if(hasItemChecked) {
+                setItemsChecked(true)
+
+            } else {
+                setItemsChecked(false)
+            }
+        }
+
+    },[shoppingListItems])
 
     async function addNewItem(value) {
         const newItem = {
@@ -86,7 +101,10 @@ export default function ShoppingListPage() {
                         </ShoppingList> : null
                     }
 
-                    <MultiAction />
+                    {
+                        itemsChecked && <MultiAction />
+                    }
+
 
                 </main>
                 <NavLink to="..">
