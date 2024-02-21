@@ -67,7 +67,7 @@ export default function ShoppingListPage() {
                 <PageHeader onClick={toggleAddItem}>Shopping list</PageHeader>
                 <main style={
                     {
-                        padding: "4rem 1rem 0 1rem",
+                        padding: "4rem .5rem 0 .5rem",
                         display: "flex",
                         flexDirection: "column",
                         gap: "1rem",
