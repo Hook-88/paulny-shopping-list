@@ -16,7 +16,9 @@ export default function ShoppingListItem({children}) {
                     }
                 }
             />
-            {children}
+            <span className="shopping-list-item--span">
+                {children}
+            </span>
             <Button variant="no-button"><FaRegTrashCan /></Button>
         </li>
     )

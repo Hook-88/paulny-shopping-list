@@ -1,5 +1,5 @@
 li.shopping-list-item {
-    padding: .5rem 0;
+    /* padding: .5rem 0; */
     border-bottom: 1px solid #efeadd;
     display: flex;
     align-items: center;
@@ -11,5 +11,14 @@ li.shopping-list-item > *:last-child {
     margin-left: auto;
     font-size: 1.2rem;
     cursor: pointer;
-    background-color: red;
+}
+
+.shopping-list-item--span {
+    padding: .5em 0;
+}
+
+li.shopping-list-item .button {
+    height: 100%;
+    /* background-color: red; */
+    padding: 0 0 0 1.5em;
 }
