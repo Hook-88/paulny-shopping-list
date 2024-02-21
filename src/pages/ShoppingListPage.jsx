@@ -49,11 +49,17 @@ export default function ShoppingListPage() {
         await updateDoc(docRef, {checked: !docSnap.data().checked}) 
     }
 
+    async function updateItem(itemId, value) {
+        const docRef = doc(db, "shoppingList", itemId)
+        await updateDoc(docRef, { name: value})
+
+    }
+
 
 
     return (
         <>
-            <ShoppingListContext.Provider value={{addNewItem, deleteItem, toggleCheckItem}}>
+            <ShoppingListContext.Provider value={{addNewItem, deleteItem, toggleCheckItem, updateItem}}>
                 <PageHeader onClick={toggleAddItem}>Shopping list</PageHeader>
                 <main style={
                     {
