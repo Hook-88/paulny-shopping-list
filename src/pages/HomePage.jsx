@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import MainNavItem from "../components/MainNavItem/mainNavItem"
+import MainNavItem from "../components/MainNavItem/MainNavItem"
 import "./HomePage.css"
 
 

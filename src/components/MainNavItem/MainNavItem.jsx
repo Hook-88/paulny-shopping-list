@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom"
 import Card from "../Card/Card"
 import "./MainNavItem.css"
 
