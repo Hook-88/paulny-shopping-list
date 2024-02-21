@@ -34,8 +34,6 @@ export default function ShoppingListPage() {
         return unsubscribe
     },[])
 
-    console.log(shoppingListItems)
-
     async function addNewItem(value) {
         const newItem = {
             name: value,
@@ -63,22 +61,17 @@ export default function ShoppingListPage() {
 
     }
 
-    // function sortShoppingListOnChecked(array) {
-        
-    //     return array.sort((a, b) => a.checked - b.checked)
-    // }
-
-
     return (
         <>
             <ShoppingListContext.Provider value={{addNewItem, deleteItem, toggleCheckItem, updateItemName}}>
                 <PageHeader onClick={toggleAddItem}>Shopping list</PageHeader>
                 <main style={
                     {
-                        padding: "0 1rem",
+                        padding: "4rem 1rem 0 1rem",
                         display: "flex",
                         flexDirection: "column",
-                        gap: "1rem"
+                        gap: "1rem",
+                        backgroundColor: "#efeadd"
                     }
                 }>
                     {showAddItem && <AddItem />}
