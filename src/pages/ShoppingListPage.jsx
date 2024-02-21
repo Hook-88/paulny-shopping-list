@@ -18,10 +18,15 @@ export default function ShoppingListPage() {
     useEffect(() => {
         const unsubscribe = onSnapshot(shoppingListCollection, (snapshot) => {
             //sync up with local state
-            const itemArray = snapshot.docs.map(doc => ({
-                ...doc.data(),
-                id: doc.id
-            }))
+
+
+            const itemArray = 
+                snapshot.docs.map(doc => ({
+                    ...doc.data(),
+                    id: doc.id
+                }))
+                .sort((a, b) => b.date - a.date)
+                .sort((a, b) => a.checked - b.checked)
 
             setShoppingListItems(itemArray)
         })
@@ -29,10 +34,13 @@ export default function ShoppingListPage() {
         return unsubscribe
     },[])
 
+    console.log(shoppingListItems)
+
     async function addNewItem(value) {
         const newItem = {
             name: value,
-            checked: false
+            checked: false,
+            date: Date.now()
         }
         const newItemRef = await addDoc(shoppingListCollection, newItem)
     }
@@ -49,17 +57,21 @@ export default function ShoppingListPage() {
         await updateDoc(docRef, {checked: !docSnap.data().checked}) 
     }
 
-    async function updateItem(itemId, value) {
+    async function updateItemName(itemId, value) {
         const docRef = doc(db, "shoppingList", itemId)
         await updateDoc(docRef, { name: value})
 
     }
 
+    // function sortShoppingListOnChecked(array) {
+        
+    //     return array.sort((a, b) => a.checked - b.checked)
+    // }
 
 
     return (
         <>
-            <ShoppingListContext.Provider value={{addNewItem, deleteItem, toggleCheckItem, updateItem}}>
+            <ShoppingListContext.Provider value={{addNewItem, deleteItem, toggleCheckItem, updateItemName}}>
                 <PageHeader onClick={toggleAddItem}>Shopping list</PageHeader>
                 <main style={
                     {

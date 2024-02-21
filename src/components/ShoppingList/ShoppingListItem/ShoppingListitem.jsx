@@ -13,7 +13,7 @@ import "./ShoppingListItem.css"
 
 export default function ShoppingListItem({item}) {
     const { id, checked, name } = item
-    const { deleteItem, toggleCheckItem, updateItem } = useContext(ShoppingListContext)
+    const { deleteItem, toggleCheckItem, updateItemName } = useContext(ShoppingListContext)
     const [edit, toggleEdit] = useToggle(false) 
     const [formData, setFormData] = useState(name)
 
@@ -33,7 +33,7 @@ export default function ShoppingListItem({item}) {
     }
 
     function handleFormChange(event) {
-        updateItem(id, event.target.value)
+        updateItemName(id, event.target.value)
         setFormData(event.target.value)
     }
 
@@ -44,11 +44,10 @@ export default function ShoppingListItem({item}) {
 
             return
         }
-        updateItem(id, formData)
+        updateItemName(id, formData)
         toggleEdit()
         
     }
-
 
     return (
         <li className="shopping-list-item" onClick={() => toggleCheckItem(id)}>
