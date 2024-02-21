@@ -1,6 +1,7 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useRef } from "react"
 import classNames from "classnames"
 import useToggle from "../../../Hooks/useToggle"
+import getStrFirstCharCap from "../../../Utility/getStrFirstCharCap"
 import { MdCheckBoxOutlineBlank } from "react-icons/md"
 import { MdCheckBox } from "react-icons/md"
 import { FaRegTrashCan } from "react-icons/fa6"
@@ -10,10 +11,11 @@ import Button from "../../Button/Button"
 import TextInput from "../../TextInput/TextInput"
 import "./ShoppingListItem.css"
 
-export default function ShoppingListItem({children, item}) {
+export default function ShoppingListItem({item}) {
+    const { id, checked, name } = item
     const { deleteItem, toggleCheckItem, updateItem } = useContext(ShoppingListContext)
-    const { id, checked } = item
-    const [formData, setFormData] = useState(children)
+    const [edit, toggleEdit] = useToggle(false) 
+    const [formData, setFormData] = useState(name)
 
     const spanClassName = classNames(
         "shopping-list-item--span", 
@@ -25,13 +27,25 @@ export default function ShoppingListItem({children, item}) {
         deleteItem(id)
     }
 
+    function handleEdit(event) {
+        event.stopPropagation()
+        toggleEdit()
+    }
+
     function handleFormChange(event) {
+        updateItem(id, event.target.value)
         setFormData(event.target.value)
     }
 
     function handleSubmit(event) {
         event.preventDefault()
+        if (formData === "") {
+            deleteItem(id)
+
+            return
+        }
         updateItem(id, formData)
+        toggleEdit()
         
     }
 
@@ -43,22 +57,27 @@ export default function ShoppingListItem({children, item}) {
                 <MdCheckBox /> :
                 <MdCheckBoxOutlineBlank />
             }
-            
-            {/* <span className={spanClassName}>
-                {children}
-            </span> */}
-            <form onSubmit={handleSubmit}>
-                <TextInput 
-                    value={formData} 
-                    transparant 
-                    onClick={(event => event.stopPropagation())}
-                    onChange={handleFormChange}
-                />
-            </form>
-            
-            <Button variant="no-button"><MdModeEdit /></Button>
+            {
+                edit ?
+                <form onSubmit={handleSubmit}>
+                    <TextInput 
+                        value={getStrFirstCharCap(name)} 
+                        transparant 
+                        onClick={(event => event.stopPropagation())}
+                        onChange={handleFormChange}
+                        autoFocus
+                    />
+                </form> : 
+                <span className={spanClassName}>
+                    {getStrFirstCharCap(name)}
+                </span>
 
-            {/* <Button variant="no-button" onClick={handleDelete}><FaRegTrashCan /></Button> */}
+            }
+                {
+                    checked ?
+                    <Button variant="no-button" onClick={handleDelete}><FaRegTrashCan /></Button> :
+                    <Button variant="no-button" onClick={handleEdit}><MdModeEdit /></Button>
+                }
         </li>
     )
 }

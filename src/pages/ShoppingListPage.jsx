@@ -75,7 +75,7 @@ export default function ShoppingListPage() {
                         shoppingListItems &&  shoppingListItems.length > 0 ?
                         <ShoppingList>
                             {shoppingListItems.map(item => (
-                                <ShoppingListItem key={item.id} item={item}>{getStrFirstCharCap(item.name)}</ShoppingListItem>
+                                <ShoppingListItem key={item.id} item={item} />
                                 ))}
                         </ShoppingList> : null
                     }
