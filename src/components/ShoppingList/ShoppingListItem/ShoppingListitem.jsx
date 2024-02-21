@@ -61,7 +61,7 @@ export default function ShoppingListItem({item}) {
                 edit ?
                 <form onSubmit={handleSubmit}>
                     <TextInput 
-                        value={getStrFirstCharCap(name)} 
+                        value={name ? getStrFirstCharCap(name) : ""} 
                         transparant 
                         onClick={(event => event.stopPropagation())}
                         onChange={handleFormChange}
@@ -69,7 +69,7 @@ export default function ShoppingListItem({item}) {
                     />
                 </form> : 
                 <span className={spanClassName}>
-                    {getStrFirstCharCap(name)}
+                    {name ? getStrFirstCharCap(name) : ""}
                 </span>
 
             }
